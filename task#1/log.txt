@@ -1,0 +1,12 @@
+
+root@vds2634537:~/admin# echo "дз№1" >> homework1.txt
+root@vds2634537:~/admin# echo "топ 10 ip-адресов" >> homework1.txt
+root@vds2634537:~/admin# awk '{print $1}' access.log | sort | uniq -c | sort -nr | head -n 10 >> homework1.txt
+root@vds2634537:~/admin# echo "методы" >> homework1.txt
+root@vds2634537:~/admin# awk '{print $6}' access.log | sort | uniq -c | sort -nr | head -n 2 >> homework1.txt
+root@vds2634537:~/admin# echo "операционные системы" >> homework1.txt
+root@vds2634537:~/admin# awk '{print $13}' access.log | sort | uniq -c | sort -nr >> homework1.txt
+root@vds2634537:~/admin# echo "топ браузеров" >> homework1.txt
+root@vds2634537:~/admin# awk '{print $12}' access.log | sort | uniq -c | sort -nr | head -n 5 >> homework1.txt
+root@vds2634537:~/admin# echo "Устройства не нашел" >> homework1.txt
+root@vds2634537:~/admin#
