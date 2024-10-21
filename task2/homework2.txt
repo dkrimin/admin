@@ -1,0 +1,27 @@
+Разбор бинаря
+   
+Делаем файл исполняемым   
+chmod +x serverTest   
+   
+ Запускаем сервер  
+./serverTest   
+   
+Проверяем запущенные процессы и смотрим их PID   
+ ps -h  
+    436 tty1     Ss+    0:00 /sbin/agetty -o -p -- \u --noclear - linux
+    482 pts/0    Ss     0:00 -bash
+    489 pts/0    Sl+    0:00 ./serverTest
+    500 pts/1    Ss     0:00 -bash
+    546 pts/1    R+     0:00 ps -h
+проверяем на зомби процессы
+ps aux | grep Z
+
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+dim         1585  0.0  0.0   6364  2292 pts/1    S+   21:41   0:00 grep Z
+Запускаем панику
+curl http://localhost:8080/bugs
+
+Recovered from panic: Random panic occurred!
+
+
+Пока всё, но продолжаю смотреть
