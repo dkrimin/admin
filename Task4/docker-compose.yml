@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+  app1:
+    container_name: app1
+    build:
+      context: .
+      dockerfile: dockerfile1
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./app:/app
+
+  app2:
+    container_name: app2
+    build:
+      context: .
+      dockerfile: dockerfile2
+    ports:
+      - "3001:3000"

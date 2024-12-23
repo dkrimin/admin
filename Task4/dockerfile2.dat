@@ -1,0 +1,11 @@
+
+FROM node
+
+WORKDIR /app
+
+RUN npm init -y
+RUN npm install express
+
+COPY index.js .
+
+CMD ["node", "index.js"]

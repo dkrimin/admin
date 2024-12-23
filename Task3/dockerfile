@@ -1,0 +1,29 @@
+    # Исходный образ для компиляции
+    FROM golang:1.21-bullseye AS build-stage
+    
+    # Устанавливаем рабочую директорию
+    WORKDIR /workspace
+    
+    # Переносим все файлы проекта в контейнер
+    COPY . .
+    
+    # Устанавливаем зависимости и компилируем приложение
+    RUN go mod tidy && go build -o app-binary .
+    
+    # Финальный компактный образ
+    FROM debian:bullseye-slim
+    
+    # Устанавливаем необходимые пакеты для запуска приложения
+    RUN apt-get update && apt-get install -y --no-install-recommends \
+        ca-certificates && rm -rf /var/lib/apt/lists/*
+    
+    # Переносим собранный бинарный файл из предыдущего этапа
+    COPY --from=build-stage /workspace/app-binary /usr/local/bin/app-binary
+    
+    # Объявляем порт, который будет использоваться приложением
+    EXPOSE 8080
+    
+    # Устанавливаем команду для запуска приложения
+    CMD ["/usr/local/bin/app-binary"]
+
+    
